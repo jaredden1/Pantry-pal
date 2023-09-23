@@ -5,7 +5,7 @@ const cors = require("cors");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const recipesRouter = require("./routes/recipes");
 
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(cors());
 app.use(logger("dev"));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/recipes", recipesRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
