@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Recipe = require('../controllers/recipes'); 
+const recipesCtrl = require('../controllers/recipes'); 
 
 // Restaurants CRUD routes
 router.get("/", recipesCtrl.index);
