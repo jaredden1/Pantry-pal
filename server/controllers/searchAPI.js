@@ -7,9 +7,9 @@ module.exports = {
 
 // Search function for API
 async function search(req, res) {
-  const ingredients = req.query.ingredients;
+  const ingredients = req.body.ingredients;
   const apiKey = API_KEY;
-  const number = 3; // Set your desired number of recipes here
+  const number = 5; // Set your desired number of recipes here
   const limitLicense = true;
   const ranking = 2;
   const ignorePantry = true;
@@ -31,6 +31,6 @@ async function search(req, res) {
     const response = await axios.request(options);
     res.status(200).json(response.data);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+      res.status(400).json({ error: error.message });
   }
 }
