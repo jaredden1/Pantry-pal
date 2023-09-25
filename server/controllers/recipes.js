@@ -37,7 +37,6 @@ async function create(req, res) {
     console.log(req.body);
     res.status(201).json(await Recipe.create(req.body));
   } catch (error) {
-    console.log(error);
     console.log("Error in create method:", error);
     res.status(400).json({ error: error.message });
   }
@@ -49,7 +48,6 @@ async function update(req, res) {
   try {
     res.status(201).json(await Recipe.update(req.body));
   } catch (error) {
-    console.log(error);
     console.log("Error in update method:", error);
     res.status(400).json({ error: error.message });
   }
