@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const recipesCtrl = require('../controllers/recipes'); 
 
-// Restaurants CRUD routes
+// Recipes CRUD routes
 router.get("/", recipesCtrl.index);
 router.get("/:id", recipesCtrl.show);
 router.post("/", recipesCtrl.create);

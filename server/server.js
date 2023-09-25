@@ -6,6 +6,7 @@ const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const recipesRouter = require("./routes/recipes");
+const searchAPIRouter = require("./routes/searchAPI")
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(logger("dev"));
 
 app.use("/", indexRouter);
 app.use("/recipes", recipesRouter);
+app.use("/", searchAPIRouter)
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
