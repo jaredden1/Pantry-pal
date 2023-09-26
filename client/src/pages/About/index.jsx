@@ -1,7 +1,7 @@
 
 export default function About() {
     return (
-      <h1>My Recipes page</h1>
+      <h1>My About page</h1>
 
     )
 }
