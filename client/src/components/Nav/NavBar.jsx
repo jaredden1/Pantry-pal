@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-const headerImage = "";
+const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
   return (
