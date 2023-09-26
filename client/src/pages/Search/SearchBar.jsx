@@ -1,3 +1,4 @@
+import "./SearchBar.css";
 
 export default function SearchBar() {
   async function handleSubmit() {}
@@ -5,7 +6,7 @@ export default function SearchBar() {
   return (
     <div className="searchbar">
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Enter Your Ingredients" required />
+        <input className="search-input" type="text" placeholder="Enter Your Ingredients" required />
         <button type="submit" className="search-submit">
           Search
         </button>
