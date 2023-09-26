@@ -1,8 +1,10 @@
 import "./SearchBar.css";
 
 export default function SearchBar() {
-  async function handleSubmit() {}
-
+  async function handleSubmit() {
+    alert("test");
+  }
+      
   return (
     <div className="searchbar">
       <form onSubmit={handleSubmit}>
