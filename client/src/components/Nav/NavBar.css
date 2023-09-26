@@ -14,3 +14,15 @@
     height: 85px;
     margin-top: 5px;
   }
+
+  .page-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+  .link {
+    margin: 24px;
+    text-decoration: none;
+  }
