@@ -25,6 +25,9 @@ async function search(req, res) {
       ranking,
       ignorePantry,
     },
+    headers: {
+      Authorization: `Bearer ${API_KEY}`,
+    },
   };
 
   try {
