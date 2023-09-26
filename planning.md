@@ -19,18 +19,17 @@ TBD
 
 ## PRIMARY MODEL / SCHEMA - RECIPE
 
-
-
+<img src="./client/src/assets/MODEL.png" height="300px">
 
 ### MVP CRUD/ Restful Routes:
 
 ## ROUTES FOR PRIMARY MODEL: RECIPES
 
+<img src="./client/src/assets/CRUD.png" height="300px">
 
 ## BASIC ERD: 
 
-ERD TBD
-
+<img src="./client/src/assets/ERD.png" height="300px">
 
 ## User Story
 
