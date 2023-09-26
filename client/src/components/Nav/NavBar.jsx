@@ -11,7 +11,7 @@ export default function Nav(props) {
       </Link>
       <div className="page-links">
         <Link className="link" to="/recipes">
-          <div className="linktext">Recipes</div>
+          <div className="linktext">My Recipes</div>
         </Link>
         <Link className="link" to="/about">
           <div className="linktext">About</div>
