@@ -1,4 +1,4 @@
-# Welcome to Pantry Pal 🍽️✨
+![image](https://i.imgur.com/pjfPXUn.png)
 
 Have you ever stared into your fridge or pantry, wondering what you can cook with the ingredients at hand? Pantry Pal is here to save your day for breakfast, lunch and dinner!
 
