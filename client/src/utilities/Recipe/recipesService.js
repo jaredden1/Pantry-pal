@@ -1,6 +1,6 @@
 import * as recipesApi from "./recipesApi";
 
-console.log(recipesApi.index.toString())
+// console.log(recipesApi.index.toString())
 
 //Retrieves a list of all recipes by calling the index method from the recipesApi
 export async function getRecipes() {

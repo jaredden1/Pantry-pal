@@ -28,7 +28,7 @@ export default function SearchBar({ setResults }) {
       <form onSubmit={handleSubmit}>
       <input
           type="text"
-          placeholder="Enter ingredients separated by a comma."
+          placeholder="Enter ingredients separated by commas (i.e bread, jam)"
           value={newSearch.ingredients}
           name="ingredients"
           onChange={handleChange}
