@@ -1,8 +1,8 @@
-const APP_URL = process.env.REACT_APP_SP00N_BASE_URL;
+const SPOON_URL = process.env.REACT_APP_SPOON_BASE_URL;
 
 //Fetches data from a specified APP_URL using a GET request
 export async function index() {
-  const res = await fetch(APP_URL, {
+  const res = await fetch(SPOON_URL, {
     method: "GET",
   });
   if (res.ok) {
@@ -22,7 +22,7 @@ export async function fetchApiResults(data) {
     body: JSON.stringify(data),
   };
 
-  const res = await fetch(APP_URL, config);
+  const res = await fetch(SPOON_URL, config);
 
   if (res.ok) {
     const data = await res.json();
