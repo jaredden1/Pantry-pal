@@ -17,7 +17,7 @@ async function search(req, res) {
 
   const options = {
     method: "GET",
-    url: "https://api.spoonacular.com/recipes/findByIngredients",
+    url: `https://api.spoonacular.com/recipes/findByIngredients`,
     params: {
       apiKey,
       ingredients,
@@ -55,7 +55,7 @@ async function getrecipebyid(req, res) {
       Authorization: `Bearer ${API_KEY}`,
     },
   };
-  // console.log(recipeInfo)
+ 
   const recipeInstructions = {
     method: "GET",
     url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions`,
@@ -70,9 +70,9 @@ async function getrecipebyid(req, res) {
   };
   try {
     const response1 = await axios.request(recipeInfo);
-    console.log(response1);
+    console.log(response1, "im getting 1");
     const response2 = await axios.request(recipeInstructions);
-    console.log(response1, response2);
+    console.log(response2, "im getting 2");
     const response = [response1.data, response2.data];
     res.status(200).json(response);
   } catch (error) {

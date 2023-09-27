@@ -3,7 +3,7 @@ const router = express.Router();
 const searchAPICtrl = require("../controllers/searchAPI");
 
 // search route
-router.get("/recipe/:id", searchAPICtrl.getrecipebyid);
 router.post("/", searchAPICtrl.search);
+router.get("/recipe/:id", searchAPICtrl.getrecipebyid);
 
 module.exports = router;

@@ -29,3 +29,17 @@ export async function fetchApiResults(data) {
     throw new Error(error.response ? error.response.data : "Invalid Request");
   }
 }
+
+export async function fetchRecipeDetails(id) {
+  try {
+    const response = await axios.get(SPOON_URL+`/recipe/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response
+  } catch (error) {
+    throw new Error(error.response ? error.response.data : "Invalid Request");
+  }
+}
