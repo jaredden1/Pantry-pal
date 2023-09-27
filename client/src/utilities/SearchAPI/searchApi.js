@@ -1,33 +1,31 @@
+// Importing the axios library for making HTTP requests
+import axios from "axios";
+
+// Setting the base URL for the API from environment variables
 const SPOON_URL = process.env.REACT_APP_SPOON_BASE_URL;
 
-//Fetches data from a specified APP_URL using a GET request
+// Function to fetch data from the SPOON_URL using a GET request
 export async function index() {
-  const res = await fetch(SPOON_URL, {
-    method: "GET",
-  });
-  if (res.ok) {
-    return res.json();
-  } else {
-    return new Error("Invalid Request");
+  try {
+    const response = await axios.get(SPOON_URL);
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response ? error.response.data : "Invalid Request");
   }
 }
 
-//Sends data to the specified APP_URL using a POST request to send JSON data to an API endpoint
+// Function to send data to the SPOON_URL using a POST request
 export async function fetchApiResults(data) {
-  const config = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
+  try {
+    const response = await axios.post(SPOON_URL, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  const res = await fetch(SPOON_URL, config);
-
-  if (res.ok) {
-    const data = await res.json();
-    return data;
-  } else {
-    throw new Error("Invalid Request");
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response ? error.response.data : "Invalid Request");
   }
 }
