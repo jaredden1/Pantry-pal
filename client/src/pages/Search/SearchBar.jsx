@@ -44,7 +44,9 @@ export default function SearchBar() {
       </form>
       <div>
         {results.map((ingredients) => {
-          return <SearchResult key={ingredients.id} searchResult={ingredients} />;
+          return (
+            <SearchResult key={ingredients.id} searchResult={ingredients} />
+          );
         })}
       </div>
     </div>
