@@ -3,11 +3,8 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema(
   {
-    ingredients: { type: String },
-    number: { type: Number },
-    limitLicense: { type: Boolean },
-    ranking: { type: Number },
-    ignorePantry: { type: Boolean },
+    title: { type: String },
+    image: { type: String },
   },
   {
     timestamps: true,
