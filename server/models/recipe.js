@@ -5,7 +5,7 @@ const recipeSchema = new Schema(
   {
     title: { type: String },
     image: { type: String },
-    // instruction: { type: String },
+    // instruction: { type: },
   },
   {
     timestamps: true,
