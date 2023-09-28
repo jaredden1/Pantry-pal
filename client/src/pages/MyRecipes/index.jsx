@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { deleteRecipe } from '../../utilities/Recipe/recipesService';
 
 export default function MyRecipes() {
     const [recipes, setRecipes] = useState([]);  
     const [loading, setLoading] = useState(true); 
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:4000/recipes')
@@ -16,6 +20,14 @@ export default function MyRecipes() {
                 setLoading(false);
             });
     }, []); 
+
+    async function handleDelete(id) {
+        try {
+          const deleteResponse = await deleteRecipe(id).then(navigate(0));
+        } catch (error) {
+          console.log(error);
+        }
+      }
 
     function stripHtml(html) {
         if (!html) return "";
@@ -47,6 +59,14 @@ export default function MyRecipes() {
                     <p>Instructions:{recipe.instructions.map((instruction,index)=>(
                         <div><p>{index+1} {instruction}</p></div>
                     ))}</p>
+                    <button
+                className="delete button"
+                onClick={() => {
+                  handleDelete(recipe._id);
+                }}
+              >
+                Remove
+              </button>
                 </div>
             ))}
         </div>
