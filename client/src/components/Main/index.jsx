@@ -14,8 +14,8 @@ export default function () {
         <Route path="/" element={<SearchBar />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/recipes" element={<MyRecipes />} />
         <Route path="/recipe/:id" element={<RecipeInfo />} />
+        <Route path="/recipes" element={<MyRecipes />} />
         <Route path="/*" element={<Error />} />
       </Routes>
     </main>

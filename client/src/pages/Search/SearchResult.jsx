@@ -1,26 +1,24 @@
-// import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { createRecipe } from "../../utilities/Recipe/recipesService";
+import { Link } from "react-router-dom";
 
 export default function SearchResult({ searchResult }) {
   // const [title, setTitle] = useState("");
   // const [image, setImage] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   setTitle(searchResult.title);
-  //   setImage(searchResult.image);
-  // }, [searchResult]);
+  // // useEffect(() => {
+  // //   setTitle(searchResult.title);
+  // //   setImage(searchResult.image);
+  // // }, [searchResult]);
 
-  async function saveRecipe() {
-    await createRecipe({
-      // title,
-      // image,
-    });
+  // async function saveRecipe() {
+  //   await createRecipe({
+  //     // title,
+  //     // image,
+  //   });
 
-    navigate("/");
-  }
+  //   navigate("/");
+  // }
 
   return (
     <div className="searchResult">
