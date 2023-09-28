@@ -9,3 +9,12 @@ export async function getRecipes(RecipeData) {
     return err;
   }
 }
+
+export async function getRecipeDetails(id) {
+  try {
+    const data = await searchAPI.fetchRecipeDetails(id);
+    return data;
+  } catch (err) {
+    return err;
+  }
+}
