@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function MyRecipes() {
     const [recipes, setRecipes] = useState([]);  
@@ -18,6 +17,11 @@ export default function MyRecipes() {
             });
     }, []); 
 
+    function stripHtml(html) {
+        if (!html) return "";
+        return html.replace(/<\/?[^>]+(>|$)/g, "");
+    }
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -26,10 +30,13 @@ export default function MyRecipes() {
         <div>
             {recipes.map(recipe => (
                 <div key={recipe.id} className="searchResult">
-                    <Link to={`/recipe/${recipe.id}`}>
-                        <h2>{recipe.title}</h2>
-                        <img src={recipe.image} alt={recipe.title} />
-                    </Link>
+                    <h2>{recipe.title}</h2>
+                    <img src={recipe.image} alt={recipe.title}/>
+                    <p>{stripHtml(recipe.summary)}</p>
+                    <br />
+                    <p>Ingredients:{recipe.ingredients}</p>
+                    <br />
+                    <p>Instructions:{recipe.instructions}</p>
                 </div>
             ))}
         </div>
