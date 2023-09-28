@@ -34,9 +34,19 @@ export default function MyRecipes() {
                     <img src={recipe.image} alt={recipe.title}/>
                     <p>{stripHtml(recipe.summary)}</p>
                     <br />
-                    <p>Ingredients:{recipe.ingredients}</p>
+                    <p>Ingredients:{recipe.ingredients.map(ingredient=>(
+                       <div>
+                        <img
+                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
+                        alt={ingredient[0]}
+                      />
+                      <p>{ingredient[0]}</p>
+                      </div> 
+                    ))}</p>
                     <br />
-                    <p>Instructions:{recipe.instructions}</p>
+                    <p>Instructions:{recipe.instructions.map((instruction,index)=>(
+                        <div><p>{index+1} {instruction}</p></div>
+                    ))}</p>
                 </div>
             ))}
         </div>

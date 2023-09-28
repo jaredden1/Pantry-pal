@@ -31,7 +31,7 @@ export default function RecipeInfo() {
     if (!recipe) return;
 
     const { image, title, summary } = recipe;
-    const ingredients = recipe.extendedIngredients.map((ing) => ing.original);
+    const ingredients = recipe.extendedIngredients.map((ing) => [ing.original,ing.image]);
     const instructions = recipe.analyzedInstructions[0]?.steps.map((step) => step.step);
 
     await createRecipe({
