@@ -4,7 +4,6 @@ import About from "../../pages/About";
 import MyRecipes from "../../pages/MyRecipes";
 import RecipeInfo from "../../pages/RecipeInfo";
 import Error from "../../pages/Error";
-import AuthPage from "../../pages/AuthPage";
 
 export default function () {
 
@@ -12,7 +11,6 @@ export default function () {
     <main className="main">
       <Routes>
         <Route path="/" element={<SearchBar />} />
-        <Route path="/login" element={<AuthPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/recipe/:id" element={<RecipeInfo />} />
         <Route path="/recipes" element={<MyRecipes />} />

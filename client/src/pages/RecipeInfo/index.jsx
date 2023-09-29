@@ -1,19 +1,21 @@
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { getRecipeDetails } from "../../utilities/SearchAPI/searchService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { createRecipe } from "../../utilities/Recipe/recipesService";
-import { useAuth0 } from "@auth0/auth0-react";  // Import the useAuth0 hook.
+import { useAuth0 } from "@auth0/auth0-react"; 
 import "./RecipeInfo.css";
 
 export default function RecipeInfo() {
+  const { loginWithRedirect } = useAuth0()
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("summary");
 
-  const { isAuthenticated } = useAuth0();  // Destructure isAuthenticated.
+  const { isAuthenticated } = useAuth0();  
   
   // State to track the alert display.
   const [showAlert, setShowAlert] = useState(false);
@@ -64,7 +66,7 @@ export default function RecipeInfo() {
     return (
       <div className="recipeInfo">
           <div className="alert">
-              Please Login To Save Recipes 🍲
+              Please <Link onClick={loginWithRedirect}>Login</Link> To Save Recipes 🍲
           </div>
       </div>
     );
