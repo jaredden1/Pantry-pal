@@ -57,7 +57,7 @@ export default function MyRecipes() {
           <p>
             Ingredients:
             {recipe.ingredients.map((ingredient) => (
-              <div>
+              <div key={ingredient[0]}>
                 <img
                   src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
                   alt={ingredient[0]}
@@ -70,7 +70,7 @@ export default function MyRecipes() {
           <p>
             Instructions:
             {recipe.instructions.map((instruction, index) => (
-              <div>
+              <div key={index}>
                 <p>
                   {index + 1} {instruction}
                 </p>

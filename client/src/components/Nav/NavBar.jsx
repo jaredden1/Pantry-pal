@@ -7,7 +7,10 @@ import "./NavBar.css";
 const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
-  const { isLoading, isAuthenticated, user } = useAuth0();
+  const { isLoading, isAuthenticated } = useAuth0();
+  console.log("Loading:", isLoading );
+  console.log("Auth:", isAuthenticated);
+
 
   return (
     <nav className="nav">
@@ -24,7 +27,7 @@ export default function Nav(props) {
 
         {!isLoading ? (<>
           <div>
-             <LogoutButton />  <LoginButton /> 
+             {isAuthenticated ? <LogoutButton /> : <LoginButton /> }
           </div>
           </>) : null }
       </div>
