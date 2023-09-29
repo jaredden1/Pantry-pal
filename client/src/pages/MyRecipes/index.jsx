@@ -39,7 +39,7 @@ export default function MyRecipes() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/recipes" />;
   }
 
   if (auth0Loading || loading) {

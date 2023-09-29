@@ -1,4 +1,4 @@
 module.exports = {
-    Recipe: require("./Recipe"),
+    Recipe: require("./recipe"),
      // all model exports can be packaged here
 }
