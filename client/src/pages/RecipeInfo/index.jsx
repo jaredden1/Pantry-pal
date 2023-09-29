@@ -3,6 +3,7 @@ import { getRecipeDetails } from "../../utilities/SearchAPI/searchService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { createRecipe } from "../../utilities/Recipe/recipesService";
+import { useAuth0 } from "@auth0/auth0-react";  // Import the useAuth0 hook.
 import "./RecipeInfo.css";
 
 export default function RecipeInfo() {
@@ -11,6 +12,11 @@ export default function RecipeInfo() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("summary");
+
+  const { isAuthenticated } = useAuth0();  // Destructure isAuthenticated.
+  
+  // State to track the alert display.
+  const [showAlert, setShowAlert] = useState(false);
 
   async function fetchRecipeDetail() {
     try {
@@ -30,6 +36,12 @@ export default function RecipeInfo() {
   async function saveRecipe() {
     if (!recipe) return;
 
+    // Check authentication and set showAlert if user isn't authenticated.
+    if (!isAuthenticated) {
+      setShowAlert(true);
+      return;
+    }
+
     const { image, title, summary } = recipe;
     const ingredients = recipe.extendedIngredients.map((ing) => [ing.original,ing.image]);
     const instructions = recipe.analyzedInstructions[0]?.steps.map((step) => step.step);
@@ -44,44 +56,56 @@ export default function RecipeInfo() {
     navigate("/recipes");
   }
 
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
-    <div className="recipeInfo">
-      <h2>{recipe.title}</h2>
-      <img src={recipe.image} alt={recipe.title} />
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-      <div className="tabs">
-        <button onClick={() => setActiveTab("summary")}>Summary</button>
-        <button onClick={() => setActiveTab("ingredients")}>Ingredients</button>
-        <button onClick={() => setActiveTab("instructions")}>Instructions</button>
-        <button onClick={() => saveRecipe("save")}>Save ME!</button>
+  if (showAlert) {
+    return (
+      <div className="recipeInfo">
+          <div className="alert">
+              Please Login To Save Recipes 🍲
+          </div>
       </div>
+    );
+  }
 
-      {activeTab === "summary" && (
-        <div
-          className="recipeSummary"
-          dangerouslySetInnerHTML={{ __html: recipe.summary }}
-        ></div>
-      )}
+  return (
+    <div className="recipeInfo">
+        <h2>{recipe.title}</h2>
+        <img src={recipe.image} alt={recipe.title} />
 
-      {activeTab === "ingredients" &&
-        recipe.extendedIngredients.map((ingredient) => (
-          <div key={ingredient.id} className="ingredient">
-            <img
-              src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
-              alt={ingredient.name}
-            />
-            <p>{ingredient.original}</p>
-          </div>
-        ))}
+        <div className="tabs">
+            <button onClick={() => setActiveTab("summary")}>Summary</button>
+            <button onClick={() => setActiveTab("ingredients")}>Ingredients</button>
+            <button onClick={() => setActiveTab("instructions")}>Instructions</button>
+            <button onClick={() => saveRecipe()}>Save ME!</button>
+        </div>
 
-      {activeTab === "instructions" &&
-        recipe.analyzedInstructions[0].steps.map((step) => (
-          <div key={step.number} className="instruction">
-            {step.number}.{step.step}
-          </div>
-        ))}
+        {activeTab === "summary" && (
+            <div
+                className="recipeSummary"
+                dangerouslySetInnerHTML={{ __html: recipe.summary }}
+            ></div>
+        )}
+
+        {activeTab === "ingredients" &&
+            recipe.extendedIngredients.map((ingredient) => (
+                <div key={ingredient.id} className="ingredient">
+                    <img
+                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+                        alt={ingredient.name}
+                    />
+                    <p>{ingredient.original}</p>
+                </div>
+            ))}
+
+        {activeTab === "instructions" &&
+            recipe.analyzedInstructions[0].steps.map((step) => (
+                <div key={step.number} className="instruction">
+                    {step.number}.{step.step}
+                </div>
+            ))}
     </div>
   );
 }

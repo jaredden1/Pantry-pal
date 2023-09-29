@@ -35,3 +35,9 @@ button:hover {
 .instruction {
     margin-top: 10px;
 } */
+
+.alert {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
