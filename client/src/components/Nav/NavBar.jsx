@@ -7,7 +7,8 @@ import "./NavBar.css";
 const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
-  const { isLoading, isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated, user } = useAuth0();
+  console.log("User", user)
   console.log("Loading:", isLoading );
   console.log("Auth:", isAuthenticated);
 
@@ -18,16 +19,15 @@ export default function Nav(props) {
         <img src={headerImage} className="headerImage" alt="Header" />
       </Link>
       <div className="page-links">
-        <Link className="link" to="/recipes">
-          <div className="linktext">My Recipes</div>
-        </Link>
         <Link className="link" to="/about">
           <div className="linktext">About</div>
         </Link>
 
         {!isLoading ? (<>
           <div>
-             {isAuthenticated ? <LogoutButton /> : <LoginButton /> }
+             {isAuthenticated ? <><Link to="/recipes">My Recipes</Link>  <LogoutButton /></>
+             :
+             <LoginButton /> }
           </div>
           </>) : null }
       </div>
