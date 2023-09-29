@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "../Auth/LoginButton";
+import LogoutButton from "../Auth/LogOutButton";
 import "./NavBar.css";
 
 const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
+  const { isLoading, isAuthenticated } = useAuth0();
+  console.log("Loading:", isLoading );
+  console.log("Auth:", isAuthenticated);
+
+
   return (
     <nav className="nav">
       <Link to="/">
@@ -16,9 +24,12 @@ export default function Nav(props) {
         <Link className="link" to="/about">
           <div className="linktext">About</div>
         </Link>
-        <Link className="link" to="/login">
-          <div className="linktext">User Login</div>
-        </Link>
+
+        {!isLoading ? (<>
+          <div>
+             {isAuthenticated ? <LogoutButton /> : <LoginButton /> }
+          </div>
+          </>) : null }
       </div>
     </nav>
   );

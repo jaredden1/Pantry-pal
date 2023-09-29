@@ -1,4 +1,4 @@
-.recipeInfo {
+/* .recipeInfo {
     max-width: 600px;
     margin: 0 auto;
 }
@@ -34,4 +34,10 @@ button:hover {
 
 .instruction {
     margin-top: 10px;
-}
+} */
+
+.alert {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
