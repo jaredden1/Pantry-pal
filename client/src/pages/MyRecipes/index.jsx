@@ -13,7 +13,7 @@ export default function MyRecipes() {
   const { user, isAuthenticated, isLoading: auth0Loading } = useAuth0();
 
   useEffect(() => {
-    fetch("http://localhost:4000/recipes")
+    fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
         setRecipes(data);
@@ -39,7 +39,7 @@ export default function MyRecipes() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to="/recipes" />;
   }
 
   if (auth0Loading || loading) {

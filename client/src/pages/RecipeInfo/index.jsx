@@ -21,6 +21,7 @@ export default function RecipeInfo() {
   const [showAlert, setShowAlert] = useState(false);
 
   async function fetchRecipeDetail() {
+    console.log('I am here FIRST')
     try {
       const result = await getRecipeDetails(id);
       setRecipe(result.data[0]);
@@ -36,6 +37,7 @@ export default function RecipeInfo() {
   }, []);
 
   async function saveRecipe() {
+    console.log("I AM HERE")
     if (!recipe) return;
 
     // Check authentication and set showAlert if user isn't authenticated.
