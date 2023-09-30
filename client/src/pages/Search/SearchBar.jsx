@@ -29,7 +29,7 @@ export default function SearchBar() {
   return (
     <div className="searchbar">
       <form onSubmit={handleSubmit}>
-        <input
+        <input 
           type="text"
           placeholder="Enter ingredients separated by commas (i.e bread, eggs)"
           value={newSearch.ingredients}
@@ -46,9 +46,11 @@ export default function SearchBar() {
         {results.map((ingredients) => {
           return (
             <SearchResult key={ingredients.id} searchResult={ingredients} />
-          );
-        })}
+            );
+          })}
       </div>
+      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. Perfect match.</div>}
     </div>
-  );
+);
+
 }

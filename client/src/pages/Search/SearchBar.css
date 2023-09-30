@@ -32,15 +32,17 @@
   
   .search-input::placeholder {
     color: #aaa;
+    font-size: 15px;
   }
   
   .search-submit {
     padding: 10px 20px;
     border: none;
-    background-color: #6b6a6a;
     color: #fff;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
+    background-image: url("../../assets/navImage.png");
   }
   
   .search-submit:hover,
@@ -72,6 +74,13 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .welcome-text {
+    margin-top: 130px;   
+    padding: 10px;          
+    font-size: 40px;       
+}
+
 
 
   
