@@ -13,7 +13,7 @@ export default function MyRecipes() {
   const { user, isAuthenticated, isLoading: auth0Loading } = useAuth0();
 
   useEffect(() => {
-    fetch("https://thepantrypal.netlify.app/recipes")
+    fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
         setRecipes(data);
