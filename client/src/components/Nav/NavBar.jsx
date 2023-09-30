@@ -24,8 +24,8 @@ export default function Nav(props) {
         </Link>
 
         {!isLoading ? (<>
-          <div>
-             {isAuthenticated ? <><Link to="/recipes">My Recipes</Link>  <LogoutButton /></>
+          <div className="page-links">
+             {isAuthenticated ? <><Link to="/recipes">My Recipes</Link><LogoutButton /></>
              :
              <LoginButton /> }
           </div>

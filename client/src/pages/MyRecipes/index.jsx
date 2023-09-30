@@ -16,6 +16,7 @@ export default function MyRecipes() {
     fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
+        const userRecipes = data.filter((recipe) => recipe.user === user.sub);
         setRecipes(data);
         setLoading(false);
       })
@@ -23,7 +24,7 @@ export default function MyRecipes() {
         console.error("Error fetching recipes:", error);
         setLoading(false);
       });
-  }, []);
+  }, [user]);
 
   async function handleDelete(id) {
     try {
