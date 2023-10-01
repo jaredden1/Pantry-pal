@@ -1,43 +1,89 @@
 .recipeInfo {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 80vh;
+  border-radius: 20px;
+  overflow-y: scroll;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .recipeInfo img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .recipeInfo .tabs {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
 
 .recipeInfo button {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: rgb(253, 139, 75);
+  transition: all 0.1s ease;
+  transform: scale(1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .recipeInfo button:hover {
-    background-color: #eee;
+  background-color: rgb(0, 182, 92);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .recipeInfo .ingredient {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.recipeInfo .ingredient img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border: 3px solid green;
+  object-fit: contain;
+  padding: 5px;
+  background-color: #fff;
 }
 
 .recipeInfo .instruction {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-.recipeInfo .alert {
-    color: red;
+.alert {
+    color: rgb(3, 3, 3);
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 250px;
+    font-size: x-large;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+    letter-spacing: 1px;
+    word-spacing: 3px;   
+    text-align: center; 
 }
+
+.alert a {
+    color: green; 
+    transition: color 0.3s ease;
+    margin: 0 5px;
+    text-decoration: underline;
+}
+
+.alert a:hover {
+    color: rgb(254, 116, 3); 
+}
+
+
+

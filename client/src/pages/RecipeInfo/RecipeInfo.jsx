@@ -68,11 +68,9 @@ export default function RecipeInfo() {
 
   if (showAlert) {
     return (
-      <div className="recipeInfo">
           <div className="alert">
-              Please <Link onClick={loginWithRedirect}>Login</Link> To Save Recipes 🍲
+              Please <Link onClick={loginWithRedirect}>Login</Link> to save recipes 🍲
           </div>
-      </div>
     );
   }
 

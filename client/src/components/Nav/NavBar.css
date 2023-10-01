@@ -7,6 +7,7 @@
   width: 100%;
   margin-left: 10px;
   margin-right: 45px;
+  font-weight: bold;
 }
 
 .nav .headerImage {
@@ -32,6 +33,12 @@
   color: inherit;
   display: flex;
   align-items: center;
+}
+
+.nav .link:hover,
+.nav [role="button"]:hover,
+.nav a:hover {
+  color: rgb(253, 139, 75); 
 }
 
 .btn {
@@ -98,7 +105,7 @@
   text-align: center;
   line-height: 30px;
   color: #020202;
-  font-weight: 400;
+  font-weight: bold;
   position: relative;
   z-index: 999;
   transition: .3s ease-in-out;

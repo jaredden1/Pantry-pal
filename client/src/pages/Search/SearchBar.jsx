@@ -51,7 +51,8 @@ export default function SearchBar() {
             );
           })}
       </div>
-      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. Perfect match.</div>}
+      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. <br/> Perfect match.</div>}
     </div>
   );
 }
+           
