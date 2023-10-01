@@ -15,22 +15,30 @@ export default function Nav(props) {
 
   return (
     <nav className="nav">
-      <Link to="/">
-        <img src={headerImage} className="headerImage" alt="Header" />
-      </Link>
-      <div className="page-links">
-        <Link className="link" to="/about">
-          <div className="linktext">About</div>
+        <Link to="/">
+            <img src={headerImage} className="headerImage" alt="Header" />
         </Link>
+        <div className="page-links">
+            <Link className="link" to="/about">About</Link>
 
-        {!isLoading ? (<>
-          <div className="page-links">
-             {isAuthenticated ? <><Link to="/recipes">My Recipes</Link><LogoutButton /></>
-             :
-             <LoginButton /> }
-          </div>
-          </>) : null }
-      </div>
+            {!isLoading && (
+                <>
+                    {isAuthenticated ? (
+                        <>
+                            <Link className="link" to="/recipes">My Recipes</Link>
+                            <LogoutButton />
+                        </>
+                    ) :
+                        <LoginButton />}
+                </>
+            )}
+        </div>
     </nav>
-  );
+);
 }
+
+
+
+
+
+

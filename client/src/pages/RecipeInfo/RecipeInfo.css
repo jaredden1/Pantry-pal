@@ -3,17 +3,17 @@
     margin: 0 auto;
 }
 
-img {
+.recipeInfo img {
     max-width: 100%;
 }
 
-.tabs {
+.recipeInfo .tabs {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-button {
+.recipeInfo button {
     padding: 10px 20px;
     cursor: pointer;
     border: 1px solid #ccc;
@@ -21,23 +21,23 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.recipeInfo button:hover {
     background-color: #eee;
 }
 
-.ingredient {
+.recipeInfo .ingredient {
     display: flex;
     gap: 10px;
     align-items: center;
     margin-top: 10px;
 }
 
-.instruction {
+.recipeInfo .instruction {
     margin-top: 10px;
 }
 
-.alert {
+.recipeInfo .alert {
     color: red;
     font-weight: bold;
     margin-top: 10px;
-  }
+}
