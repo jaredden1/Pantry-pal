@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router";
 import { deleteRecipe } from "../../utilities/Recipe/recipesService";
+import { v4 as uuidv4} from "uuid"
 import "./MyRecipe.css";
 
 
@@ -11,13 +12,13 @@ export default function MyRecipes() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading: auth0Loading } = useAuth0();
-
+console.log(user, "this is User")
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
-        const userRecipes = data.filter((recipe) => recipe.user === user.sub);
-        setRecipes(data);
+        const userRecipes = data.filter((recipe) => recipe?.user === user?.sub);
+        setRecipes(userRecipes);
         setLoading(false);
       })
       .catch((error) => {
@@ -50,12 +51,12 @@ export default function MyRecipes() {
   return (
     <div>
       <div>
-      <img src={user.picture} alt={""} />
-        <h2>Welcome {user.name}</h2>
+      <img src={user?.picture} alt={""} />
+        <h2>Welcome {user?.name}</h2>
         <br />
       </div>
       {recipes.map((recipe) => (
-        <div key={recipe.id} className="searchResult">
+        <div key={uuidv4()} className="searchResult">
           <h2>{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title} />
           <button
@@ -68,10 +69,10 @@ export default function MyRecipes() {
           </button>
           <p>{stripHtml(recipe.summary)}</p>
           <br />
-          <p>
+          
             Ingredients:
             {recipe.ingredients.map((ingredient) => (
-              <div key={ingredient[0]}>
+              <div key={uuidv4()}>
                 <img
                   src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
                   alt={ingredient[0]}
@@ -79,18 +80,18 @@ export default function MyRecipes() {
                 <p>{ingredient[0]}</p>
               </div>
             ))}
-          </p>
+          
           <br />
-          <p>
+          
             Instructions:
             {recipe.instructions.map((instruction, index) => (
-              <div key={index}>
-                <p>
+              <div key={uuidv4()}>
+                
                   {index + 1} {instruction}
-                </p>
+                
               </div>
             ))}
-          </p>
+          
         </div>
       ))}
     </div>

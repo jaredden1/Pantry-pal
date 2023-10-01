@@ -15,7 +15,8 @@ export default function RecipeInfo() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("summary");
 
-  const { isAuthenticated } = useAuth0();  
+  const { isAuthenticated, user } = useAuth0();
+  console.log(user, "hello")  
   
   // State to track the alert display.
   const [showAlert, setShowAlert] = useState(false);
@@ -56,6 +57,7 @@ export default function RecipeInfo() {
       summary,
       ingredients,
       instructions,
+      user: user.sub,
     });
     navigate("/recipes");
   }

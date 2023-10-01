@@ -1,0 +1,45 @@
+.searchResultContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 500px; 
+    overflow-y: auto;  
+    gap: 19px; 
+    justify-content: center;  
+}
+
+.searchResult {
+    position: relative;
+    width: calc(33% - 2px); 
+    height: calc(35% - 2px);
+    overflow: hidden;
+}
+
+
+.searchResult img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+}
+
+
+
+.searchResult h2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(250, 250, 250);
+    font-size: 25px; 
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 5px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 1; 
+}
+
