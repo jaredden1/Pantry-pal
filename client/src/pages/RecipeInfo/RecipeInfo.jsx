@@ -7,20 +7,28 @@ import { createRecipe } from "../../utilities/Recipe/recipesService";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeInfo.css";
 
+// RecipeInfo component definition
 export default function RecipeInfo() {
+  // Hooks and utilities for authentication
   const { loginWithRedirect } = useAuth0();
+  
+  // Getting the 'id' parameter from the URL using useParams hook
   const { id } = useParams();
+
+  // State hooks
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("summary");
 
+  // Authentication state and user information
   const { isAuthenticated, user } = useAuth0();
   console.log(user, "hello");
 
-  // State to track the alert display.
+  // State to track if the alert should be displayed (for user not authenticated)
   const [showAlert, setShowAlert] = useState(false);
 
+  // Function to fetch the recipe details using the id
   async function fetchRecipeDetail() {
     console.log("I am here FIRST");
     try {
@@ -33,20 +41,23 @@ export default function RecipeInfo() {
     }
   }
 
+  // useEffect hook to fetch the recipe detail when the component mounts
   useEffect(() => {
     fetchRecipeDetail();
   }, []);
 
+  // Function to save a recipe
   async function saveRecipe() {
     console.log("I AM HERE");
     if (!recipe) return;
 
-    // Check authentication and set showAlert if user isn't authenticated.
+    // If the user is not authenticated, show an alert
     if (!isAuthenticated) {
       setShowAlert(true);
       return;
     }
 
+    // Extract necessary details from the fetched recipe
     const { image, title, summary } = recipe;
     const ingredients = recipe.extendedIngredients.map((ing) => [
       ing.original,
@@ -56,6 +67,7 @@ export default function RecipeInfo() {
       (step) => step.step
     );
 
+    // Call the API to save the recipe
     await createRecipe({
       image,
       title,
@@ -64,13 +76,17 @@ export default function RecipeInfo() {
       instructions,
       user: user.sub,
     });
+
+    // Redirect user to the recipes page
     navigate("/recipes");
   }
 
+  // Render loading state
   if (loading) {
     return <div>Loading...</div>;
   }
 
+  // Render alert for unauthenticated users trying to save a recipe
   if (showAlert) {
     return (
       <div className="alert">
