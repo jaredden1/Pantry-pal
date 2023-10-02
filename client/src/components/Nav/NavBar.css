@@ -3,7 +3,7 @@
   justify-content: space-between;
   display: flex;
   flex-direction: row;
-  align-items: center;  
+  align-items: center;
   width: 100%;
   margin-left: 10px;
   margin-right: 45px;
@@ -22,13 +22,13 @@
   flex-direction: row;
   justify-content: flex-end;
   gap: 20px;
-  align-items: center;  
+  align-items: center;
 }
 
 .nav .link,
 .nav [role="button"],
 .nav a {
-  padding: 0 24px;  
+  padding: 0 24px;
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -38,7 +38,7 @@
 .nav .link:hover,
 .nav [role="button"]:hover,
 .nav a:hover {
-  color: rgb(253, 139, 75); 
+  color: rgb(253, 139, 75);
 }
 
 .btn {
@@ -57,11 +57,11 @@
   position: absolute;
   width: 140%;
   height: 50px;
-  background-color:rgb(253, 139, 75);
+  background-color: rgb(253, 139, 75);
   transform: rotate(10deg);
   top: -80px;
   left: 20%;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn:after {
@@ -73,30 +73,30 @@
   transform: rotate(10deg);
   top: 80px;
   left: -20%;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn:hover {
   background-color: #fff;
   transition: 0s linear;
-  transition-delay: .3s;
+  transition-delay: 0.3s;
 }
 
 .btn:hover:before {
   top: -20px;
   left: -20%;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn:hover:after {
   top: 10px;
   left: -23%;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn:hover > .btn-content {
   color: #060606;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn-content {
@@ -108,6 +108,5 @@
   font-weight: bold;
   position: relative;
   z-index: 999;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
-

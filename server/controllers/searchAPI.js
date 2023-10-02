@@ -55,24 +55,10 @@ async function getrecipebyid(req, res) {
       Authorization: `Bearer ${API_KEY}`,
     },
   };
- 
-  // const recipeInstructions = {
-  //   method: "GET",
-  //   url: `https://api.spoonacular.com/recipes/${id}/analyzedInstructions`,
-  //   params: {
-  //     apiKey,
-  //     id,
-  //     stepBreakdown: true,
-  //   },
-  //   headers: {
-  //     Authorization: `Bearer ${API_KEY}`,
-  //   },
-  // };
+
   try {
     const response1 = await axios.request(recipeInfo);
     console.log(response1, "im getting 1");
-    // const response2 = await axios.request(recipeInstructions);
-    // console.log(response2, "im getting 2");
     const response = [response1.data];
     res.status(200).json(response);
   } catch (error) {

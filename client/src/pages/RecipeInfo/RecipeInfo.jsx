@@ -4,11 +4,11 @@ import { getRecipeDetails } from "../../utilities/SearchAPI/searchService";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { createRecipe } from "../../utilities/Recipe/recipesService";
-import { useAuth0 } from "@auth0/auth0-react"; 
+import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeInfo.css";
 
 export default function RecipeInfo() {
-  const { loginWithRedirect } = useAuth0()
+  const { loginWithRedirect } = useAuth0();
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,13 +16,13 @@ export default function RecipeInfo() {
   const [activeTab, setActiveTab] = useState("summary");
 
   const { isAuthenticated, user } = useAuth0();
-  console.log(user, "hello")  
-  
+  console.log(user, "hello");
+
   // State to track the alert display.
   const [showAlert, setShowAlert] = useState(false);
 
   async function fetchRecipeDetail() {
-    console.log('I am here FIRST')
+    console.log("I am here FIRST");
     try {
       const result = await getRecipeDetails(id);
       setRecipe(result.data[0]);
@@ -38,7 +38,7 @@ export default function RecipeInfo() {
   }, []);
 
   async function saveRecipe() {
-    console.log("I AM HERE")
+    console.log("I AM HERE");
     if (!recipe) return;
 
     // Check authentication and set showAlert if user isn't authenticated.
@@ -48,8 +48,13 @@ export default function RecipeInfo() {
     }
 
     const { image, title, summary } = recipe;
-    const ingredients = recipe.extendedIngredients.map((ing) => [ing.original,ing.image]);
-    const instructions = recipe.analyzedInstructions[0]?.steps.map((step) => step.step);
+    const ingredients = recipe.extendedIngredients.map((ing) => [
+      ing.original,
+      ing.image,
+    ]);
+    const instructions = recipe.analyzedInstructions[0]?.steps.map(
+      (step) => step.step
+    );
 
     await createRecipe({
       image,
@@ -68,48 +73,50 @@ export default function RecipeInfo() {
 
   if (showAlert) {
     return (
-          <div className="alert">
-              Please <Link onClick={loginWithRedirect}>Login</Link> to save recipes 🍲
-          </div>
+      <div className="alert">
+        Please <Link onClick={loginWithRedirect}>Login</Link> to save recipes 🍲
+      </div>
     );
   }
 
   return (
     <div className="recipeInfo">
-        <h2>{recipe.title}</h2>
-        <img src={recipe.image} alt={recipe.title} />
+      <h2>{recipe.title}</h2>
+      <img src={recipe.image} alt={recipe.title} />
 
-        <div className="tabs">
-            <button onClick={() => setActiveTab("summary")}>Summary</button>
-            <button onClick={() => setActiveTab("ingredients")}>Ingredients</button>
-            <button onClick={() => setActiveTab("instructions")}>Instructions</button>
-            <button onClick={() => saveRecipe()}>Save ME!</button>
-        </div>
+      <div className="tabs">
+        <button onClick={() => setActiveTab("summary")}>Summary</button>
+        <button onClick={() => setActiveTab("ingredients")}>Ingredients</button>
+        <button onClick={() => setActiveTab("instructions")}>
+          Instructions
+        </button>
+        <button onClick={() => saveRecipe()}>Save ME!</button>
+      </div>
 
-        {activeTab === "summary" && (
-            <div
-                className="recipeSummary"
-                dangerouslySetInnerHTML={{ __html: recipe.summary }}
-            ></div>
-        )}
+      {activeTab === "summary" && (
+        <div
+          className="recipeSummary"
+          dangerouslySetInnerHTML={{ __html: recipe.summary }}
+        ></div>
+      )}
 
-        {activeTab === "ingredients" &&
-            recipe.extendedIngredients.map((ingredient) => (
-                <div key={ingredient.id} className="ingredient">
-                    <img
-                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
-                        alt={ingredient.name}
-                    />
-                    <p>{ingredient.original}</p>
-                </div>
-            ))}
+      {activeTab === "ingredients" &&
+        recipe.extendedIngredients.map((ingredient) => (
+          <div key={ingredient.id} className="ingredient">
+            <img
+              src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+              alt={ingredient.name}
+            />
+            <p>{ingredient.original}</p>
+          </div>
+        ))}
 
-        {activeTab === "instructions" &&
-            recipe.analyzedInstructions[0].steps.map((step) => (
-                <div key={step.number} className="instruction">
-                    {step.number}.{step.step}
-                </div>
-            ))}
+      {activeTab === "instructions" &&
+        recipe.analyzedInstructions[0].steps.map((step) => (
+          <div key={step.number} className="instruction">
+            {step.number}.{step.step}
+          </div>
+        ))}
     </div>
   );
 }
