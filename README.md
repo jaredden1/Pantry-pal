@@ -5,8 +5,16 @@ Have you ever stared into your fridge or pantry, wondering what you can cook wit
 ## About Pantry Pal
 Pantry Pal is a delightful solution for those days when inspiration doesn't strike or when you're trying to minimize grocery store trips. The app is tailored to help you whip up delicious meals with what you've got on hand.
 
+<img src="./client/src/assets/search.png">
+<img src="./client/src/assets/searchResult.png">
+<img src="./client/src/assets/recipeInfo.png">
+<img src="./client/src/assets/recipeSave.png">
+
 ## How Do I Use Pantry Pal? 
-Click on this link to access the app: 
+Click on this link to access the app: https://thepantrypal.netlify.app
+
+Simply enter the ingredients you have on hand in the searchbar, and Pantry Pal will present you with a curated list of delicious recipes tailored to your pantry's content.
+Fall in love with a dish? Save the recipe with just a click, so you can revisit and cook it anytime you crave it.
 
 
 
@@ -21,9 +29,7 @@ Click on this link to access the app:
 
 ## Future Features: 
 
-1. Implement Auth0 Authorization.
-2. Implement the ability for a user to save favorite recipes.
-3. Implement the ability for a user to delete recipes they no longer want in their collection.
+1. Fix deployment issues and bugs
 
 
 
