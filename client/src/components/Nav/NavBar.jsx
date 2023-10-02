@@ -8,37 +8,35 @@ const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
   const { isLoading, isAuthenticated, user } = useAuth0();
-  console.log("User", user)
-  console.log("Loading:", isLoading );
+  console.log("User", user);
+  console.log("Loading:", isLoading);
   console.log("Auth:", isAuthenticated);
-
 
   return (
     <nav className="nav">
-        <Link to="/">
-            <img src={headerImage} className="headerImage" alt="Header" />
+      <Link to="/">
+        <img src={headerImage} className="headerImage" alt="Header" />
+      </Link>
+      <div className="page-links">
+        <Link className="link" to="/about">
+          About
         </Link>
-        <div className="page-links">
-            <Link className="link" to="/about">About</Link>
 
-            {!isLoading && (
-                <>
-                    {isAuthenticated ? (
-                        <>
-                            <Link className="link" to="/recipes">My Recipes</Link>
-                            <LogoutButton />
-                        </>
-                    ) :
-                        <LoginButton />}
-                </>
+        {!isLoading && (
+          <>
+            {isAuthenticated ? (
+              <>
+                <Link className="link" to="/recipes">
+                  My Recipes
+                </Link>
+                <LogoutButton />
+              </>
+            ) : (
+              <LoginButton />
             )}
-        </div>
+          </>
+        )}
+      </div>
     </nav>
-);
+  );
 }
-
-
-
-
-
-
