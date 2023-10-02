@@ -10,12 +10,17 @@ export default function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  // Hooks and utilities for authentication
   const { user, isAuthenticated, isLoading: auth0Loading } = useAuth0();
   console.log(user, "this is User");
+
+  // useEffect to fetch the recipes for the authenticated user
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
+        // Filter recipes that belong to the current authenticated user
         const userRecipes = data.filter((recipe) => recipe?.user === user?.sub);
         setRecipes(userRecipes);
         setLoading(false);
@@ -26,6 +31,7 @@ export default function MyRecipes() {
       });
   }, [user]);
 
+  // Handler function to delete a specific recipe
   async function handleDelete(id) {
     try {
       const deleteResponse = await deleteRecipe(id).then(navigate(0));
@@ -34,6 +40,7 @@ export default function MyRecipes() {
     }
   }
 
+  // Helper function to strip HTML tags from a given string
   function stripHtml(html) {
     if (!html) return "";
     return html.replace(/<\/?[^>]+(>|$)/g, "");
@@ -47,6 +54,7 @@ export default function MyRecipes() {
     return <div>Loading...</div>;
   }
 
+  // Render user's profile and their associated recipes
   return (
     <div>
       <div className="MyRecipes-userProfile">
