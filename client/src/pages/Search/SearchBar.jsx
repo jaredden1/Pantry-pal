@@ -28,31 +28,34 @@ export default function SearchBar() {
 
   return (
     <div className="main-container">
-    <div className="searchbar">
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text"
-          placeholder="Enter ingredients separated by commas (i.e bread, eggs)"
-          value={newSearch.ingredients}
-          name="ingredients"
-          onChange={handleChange}
-          required
-          className="search-input"
-        />
-        <button type="submit" className="search-submit">
-          Search
-        </button>
-      </form>
-          </div>
-      <div className="searchResultContainer"> 
+      <div className="searchbar">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Enter ingredients separated by commas (i.e bread, eggs)"
+            value={newSearch.ingredients}
+            name="ingredients"
+            onChange={handleChange}
+            required
+            className="search-input"
+          />
+          <button type="submit" className="search-submit">
+            Search
+          </button>
+        </form>
+      </div>
+      <div className="searchResultContainer">
         {results.map((ingredients) => {
           return (
             <SearchResult key={ingredients.id} searchResult={ingredients} />
-            );
-          })}
+          );
+        })}
       </div>
-      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. <br/> Perfect match.</div>}
+      {results.length === 0 && (
+        <div className="welcome-text">
+          Your ingredients. Our Recipes. <br /> Perfect match.
+        </div>
+      )}
     </div>
   );
 }
-           

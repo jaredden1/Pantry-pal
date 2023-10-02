@@ -32,13 +32,13 @@ export async function fetchApiResults(data) {
 
 export async function fetchRecipeDetails(id) {
   try {
-    const response = await axios.get(SPOON_URL+`/recipe/${id}`, {
+    const response = await axios.get(SPOON_URL + `/recipe/${id}`, {
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    return response
+    return response;
   } catch (error) {
     throw new Error(error.response ? error.response.data : "Invalid Request");
   }
