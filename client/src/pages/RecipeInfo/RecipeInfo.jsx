@@ -15,7 +15,8 @@ export default function RecipeInfo() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("summary");
 
-  const { isAuthenticated } = useAuth0();  
+  const { isAuthenticated, user } = useAuth0();
+  console.log(user, "hello")  
   
   // State to track the alert display.
   const [showAlert, setShowAlert] = useState(false);
@@ -56,6 +57,7 @@ export default function RecipeInfo() {
       summary,
       ingredients,
       instructions,
+      user: user.sub,
     });
     navigate("/recipes");
   }
@@ -66,11 +68,9 @@ export default function RecipeInfo() {
 
   if (showAlert) {
     return (
-      <div className="recipeInfo">
           <div className="alert">
-              Please <Link onClick={loginWithRedirect}>Login</Link> To Save Recipes 🍲
+              Please <Link onClick={loginWithRedirect}>Login</Link> to save recipes 🍲
           </div>
-      </div>
     );
   }
 

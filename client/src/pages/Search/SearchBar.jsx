@@ -27,6 +27,7 @@ export default function SearchBar() {
   }
 
   return (
+    <div className="main-container">
     <div className="searchbar">
       <form onSubmit={handleSubmit}>
         <input 
@@ -42,15 +43,16 @@ export default function SearchBar() {
           Search
         </button>
       </form>
-      <div>
+          </div>
+      <div className="searchResultContainer"> 
         {results.map((ingredients) => {
           return (
             <SearchResult key={ingredients.id} searchResult={ingredients} />
             );
           })}
       </div>
-      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. Perfect match.</div>}
+      {results.length === 0 && <div className="welcome-text">Your ingredients. Our Recipes. <br/> Perfect match.</div>}
     </div>
-);
-
+  );
 }
+           

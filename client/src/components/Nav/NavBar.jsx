@@ -8,10 +8,9 @@ const headerImage = "https://i.imgur.com/pjfPXUn.png";
 
 export default function Nav(props) {
   const { isLoading, isAuthenticated, user } = useAuth0();
-  console.log("User", user)
-  console.log("Loading:", isLoading );
+  console.log("User", user);
+  console.log("Loading:", isLoading);
   console.log("Auth:", isAuthenticated);
-
 
   return (
     <nav className="nav">
@@ -20,16 +19,23 @@ export default function Nav(props) {
       </Link>
       <div className="page-links">
         <Link className="link" to="/about">
-          <div className="linktext">About</div>
+          About
         </Link>
 
-        {!isLoading ? (<>
-          <div className="page-links">
-             {isAuthenticated ? <><Link to="/recipes">My Recipes</Link><LogoutButton /></>
-             :
-             <LoginButton /> }
-          </div>
-          </>) : null }
+        {!isLoading && (
+          <>
+            {isAuthenticated ? (
+              <>
+                <Link className="link" to="/recipes">
+                  My Recipes
+                </Link>
+                <LogoutButton />
+              </>
+            ) : (
+              <LoginButton />
+            )}
+          </>
+        )}
       </div>
     </nav>
   );
