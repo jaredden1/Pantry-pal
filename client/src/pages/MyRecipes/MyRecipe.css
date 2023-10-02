@@ -1,77 +1,22 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 19px;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 40px auto 0 auto;
+.MyRecipes-searchResult {
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #f7f7f7;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    max-height: 500px;
-}
-
-.myRecipe-searchResult {
-    position: relative;
-    width: calc(33% - 2px);
-    height: calc(35% - 2px);
-    overflow: hidden;
-    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.myRecipe-searchResult > * {
-    margin: 0;
-    padding: 0;
-}
-
-.myRecipe-searchResult img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.2);
-}
-
-.myRecipe-searchResult h2 {
-    color: rgb(250, 250, 250);
-    font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 5px 10px;
-    border-radius: 50px;
-    max-width: 90%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 0px; /* Set to 0 */
-}
-
-
-.myRecipe-deleteButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 24px;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 2;
-}
-
-.myRecipe-deleteButton:hover {
-    background-color: rgba(255, 50, 50, 0.7);
-}
-
-.myRecipe-searchResult > .centered-content > button {
+    overflow-y: auto; 
+    position: relative;  /* This ensures positioning of the button is relative to the container */
+  }
+  
+  .MyRecipes-searchResult img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block;  /* Ensure it takes full width */
+  }
+  
+  .MyRecipes-deleteButton {
     padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
@@ -80,30 +25,27 @@
     transition: all 0.1s ease;
     transform: scale(1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.myRecipe-searchResult > .centered-content > button:hover {
+    
+    /* Positioning for the delete button */
+    position: absolute; 
+    top: 10px; /* 10 pixels from the top */
+    right: 10px; /* 10 pixels from the right */
+  }
+  
+  .MyRecipes-deleteButton:hover {
     background-color: rgb(0, 182, 92);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.myRecipe-details {
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.myRecipe-ingredient {
+  }
+  
+  .MyRecipes-ingredient {
     display: flex;
     gap: 10px;
     align-items: center;
     margin-top: 10px;
-}
-
-.myRecipe-ingredient img {
+  }
+  
+  .MyRecipes-ingredient img {
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -111,39 +53,9 @@
     object-fit: contain;
     padding: 5px;
     background-color: #fff;
-}
-
-.myRecipe-instruction {
+  }
+  
+  .MyRecipes-instruction {
     margin-top: 10px;
-}
-
-.myRecipe-searchResult .centered-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: calc(50% - 15px); 
-    z-index: 2; 
-}
-
-
-.expand-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 5px 10px;
-    border-radius: 50px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: rgb(253, 139, 75);
-    transition: all 0.1s ease;
-    transform: scale(1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 2; 
-}
-
-.expand-button:hover {
-    background-color: rgb(0, 182, 92);
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+  }
+  

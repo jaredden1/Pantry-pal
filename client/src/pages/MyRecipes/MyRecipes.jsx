@@ -49,22 +49,19 @@ export default function MyRecipes() {
 
   return (
     <div>
-      <div>
+      <div className="MyRecipes-userProfile">
         <img src={user?.picture} alt={""} />
         <h2>Welcome {user?.name}</h2>
         <br />
       </div>
       {recipes.map((recipe) => (
-        <div key={uuidv4()} className="searchResult">
-          <h2>{recipe.title}</h2>
+        <div key={uuidv4()} className="MyRecipes-searchResult">
           <img src={recipe.image} alt={recipe.title} />
           <button
-            className="delete button"
-            onClick={() => {
-              handleDelete(recipe._id);
-            }}
+            className="MyRecipes-deleteButton"
+            onClick={() => handleDelete(recipe._id)}
           >
-            Remove
+            X
           </button>
           <p>{stripHtml(recipe.summary)}</p>
           <br />
