@@ -10,17 +10,14 @@ export default function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  // Hooks and utilities for authentication
   const { user, isAuthenticated, isLoading: auth0Loading } = useAuth0();
-  console.log(user, "this is User");
+  const [contentToShow, setContentToShow] = useState(null);
+  const [activeRecipe, setActiveRecipe] = useState(null);
 
-  // useEffect to fetch the recipes for the authenticated user
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((data) => {
-        // Filter recipes that belong to the current authenticated user
         const userRecipes = data.filter((recipe) => recipe?.user === user?.sub);
         setRecipes(userRecipes);
         setLoading(false);
@@ -31,16 +28,14 @@ export default function MyRecipes() {
       });
   }, [user]);
 
-  // Handler function to delete a specific recipe
   async function handleDelete(id) {
     try {
-      const deleteResponse = await deleteRecipe(id).then(navigate(0));
+      await deleteRecipe(id).then(navigate(0));
     } catch (error) {
       console.log(error);
     }
   }
 
-  // Helper function to strip HTML tags from a given string
   function stripHtml(html) {
     if (!html) return "";
     return html.replace(/<\/?[^>]+(>|$)/g, "");
@@ -54,42 +49,108 @@ export default function MyRecipes() {
     return <div>Loading...</div>;
   }
 
-  // Render user's profile and their associated recipes
   return (
     <div>
-      <div className="MyRecipes-userProfile">
-        <img src={user?.picture} alt={""} />
+      <div>
+        <img src={user?.picture} alt="" />
         <h2>Welcome {user?.name}</h2>
         <br />
       </div>
+
       {recipes.map((recipe) => (
-        <div key={uuidv4()} className="MyRecipes-searchResult">
+        <div
+          key={uuidv4()}
+          className="myRecipe-searchResult"
+          style={{
+            display:
+              activeRecipe && activeRecipe !== recipe._id ? "none" : "block",
+          }}
+        >
+          <h2>{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title} />
+
+          {/* Delete button */}
           <button
-            className="MyRecipes-deleteButton"
-            onClick={() => handleDelete(recipe._id)}
+            className="myRecipe-deleteButton"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDelete(recipe._id);
+            }}
           >
             X
           </button>
-          <p>{stripHtml(recipe.summary)}</p>
-          <br />
-          Ingredients:
-          {recipe.ingredients.map((ingredient) => (
-            <div key={uuidv4()}>
-              <img
-                src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
-                alt={ingredient[0]}
-              />
-              <p>{ingredient[0]}</p>
+
+          {/* Expand/Collapse button */}
+          <button
+            onClick={() => {
+              if (activeRecipe === recipe._id) {
+                setActiveRecipe(null);
+              } else {
+                setActiveRecipe(recipe._id);
+              }
+            }}
+          >
+            Expand/Collapse
+          </button>
+
+          {activeRecipe === recipe._id && (
+            <div className="myRecipe-details">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setContentToShow("summary");
+                }}
+              >
+                Summary
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setContentToShow("ingredients");
+                }}
+              >
+                Ingredients
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setContentToShow("instructions");
+                }}
+              >
+                Instructions
+              </button>
+
+              {contentToShow === "summary" && (
+                <p>{stripHtml(recipe.summary)}</p>
+              )}
+              {contentToShow === "ingredients" && (
+                <>
+                  <br />
+                  Ingredients:
+                  {recipe.ingredients.map((ingredient) => (
+                    <div key={uuidv4()} className="myRecipe-ingredient">
+                      <img
+                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
+                        alt={ingredient[0]}
+                      />
+                      <p>{ingredient[0]}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+              {contentToShow === "instructions" && (
+                <>
+                  <br />
+                  Instructions:
+                  {recipe.instructions.map((instruction, index) => (
+                    <div key={uuidv4()} className="myRecipe-instruction">
+                      {index + 1}. {instruction}
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
-          ))}
-          <br />
-          Instructions:
-          {recipe.instructions.map((instruction, index) => (
-            <div key={uuidv4()}>
-              {index + 1} {instruction}
-            </div>
-          ))}
+          )}
         </div>
       ))}
     </div>
