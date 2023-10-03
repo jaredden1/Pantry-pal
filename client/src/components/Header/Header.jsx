@@ -1,7 +1,7 @@
-import Nav from "../../components/Nav/NavBar";
+import Nav from "../Nav/NavBar";
 import "./Header.css";
 
-export default function () {
+export default function Header() {
   return (
     <div className="header">
       <Nav />
