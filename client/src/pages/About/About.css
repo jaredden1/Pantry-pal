@@ -1,7 +1,6 @@
 .about {
   max-width: 800px;
   margin: auto;
-  /* padding: 20px; */
   text-align: center;
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -73,40 +72,4 @@ p {
 .about-developer a:hover {
   text-decoration: underline;
   color: rgb(253, 139, 75);
-}
-
-.about-contact-form {
-  background-color: #f1f1f1;
-  margin: 10px 70px;
-}
-
-.about-contact-form label,
-.about-contact-form input,
-.about-contact-form textarea {
-  display: block;
-  width: 80%;
-  margin-left: 65px;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.about-contact-form textarea {
-  height: 120px;
-  resize: vertical;
-}
-
-.about-contact-form button {
-  background-color: rgb(0, 182, 92);
-  color: rgb(4, 4, 4);
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  margin: 15px;
-  padding: 10px;
-  border-radius: 50px;
-}
-
-.about-contact-form button:hover {
-  background-color: rgb(253, 139, 75);
 }

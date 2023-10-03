@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Contact from "../../components/Contact/Contact";
 import "./About.css";
 
 export default function About() {
@@ -82,40 +83,7 @@ export default function About() {
         </>
       )}
 
-      {selectedTab === "contact" && (
-        <>
-          <h2 className="about-subheader">Contact Me</h2>
-          <form className="about-contact-form">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" required />
-
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send Message</button>
-          </form>
-
-          <ul className="about-developer">
-            James Redden<> | </>
-            <a
-              href="https://www.linkedin.com/in/jamesredden1"
-              className="linkedin"
-            >
-              LinkedIn
-            </a>
-            <> | </>
-            <a
-              href="https://github.com/jaredden1/pantry-pal"
-              className="about-github-link"
-            >
-              GitHub
-            </a>
-          </ul>
-        </>
-      )}
+      {selectedTab === "contact" && <Contact />}
     </div>
   );
 }
