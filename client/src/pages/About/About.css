@@ -1,12 +1,65 @@
-  .about {
-    background-color: rgba(249, 248, 246, 0.8);
-    border: 1px solid #ccc;
-    color: #080808;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-    margin-top: 2%;
-  }
+.about {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  font-weight: bold;
+  font-size: 16.5px;
+}
+
+.about-header, .about-subheader {
+  color: green;
+}
+
+.about-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about-subheader {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #010101;
+}
+
+.tech-stack {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tech-stack div {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 3px 290px;
+  border-radius: 5px;
+}
+
+.developer {
+  list-style-type: none;
+  font-size: larger;
+}
+
+.developer a {
+  text-decoration: none;
+  color: green;
+  font-weight: bolder;
+}
+
+.developer a:hover {
+  text-decoration: underline;
+  color: rgb(253, 139, 75);
+}
+
+footer {
+  margin-top: 10px;
+  color: #020202;
+}
+
+
+
+
   
