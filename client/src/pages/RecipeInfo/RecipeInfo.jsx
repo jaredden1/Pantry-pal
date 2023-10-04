@@ -106,6 +106,8 @@ export default function RecipeInfo() {
         <button onClick={() => setActiveTab("instructions")}>Instructions</button>
         <button onClick={() => saveRecipe()}>Save ME!</button>
       </div>
+      <br />
+      <br />
 
       {activeTab === "summary" && (
         <div

@@ -31,7 +31,7 @@
 }
 
 .searchResult:hover img {
-  filter: brightness(1.2);
+  filter: brightness(1.3);
   transform: scale(1.3);
 }
 
