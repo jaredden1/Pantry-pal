@@ -10,9 +10,9 @@ module.exports = {
 async function search(req, res) {
   const ingredients = req.body.ingredients;
   const apiKey = API_KEY;
-  const number = 20; // Set your desired number of recipes here
+  const number = 32; // Set your desired number of recipes here
   const limitLicense = true;
-  const ranking = 2;
+  const ranking = 1;
   const ignorePantry = true;
 
   const options = {
