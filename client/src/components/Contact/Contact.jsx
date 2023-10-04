@@ -50,7 +50,6 @@ export default function Contact() {
           required
           placeholder="Message:"
         ></textarea>
-
         <button type="submit">Send Message</button>
       </form>
 
