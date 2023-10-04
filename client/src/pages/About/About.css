@@ -1,12 +1,75 @@
-  .about {
-    background-color: rgba(249, 248, 246, 0.8);
-    border: 1px solid #ccc;
-    color: #080808;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-    margin-top: 2%;
-  }
-  
+.about {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  font-weight: bold;
+  font-size: 16.5px;
+}
+
+.about-tabs {
+  margin: 0 auto; 
+  padding:30px;
+  list-style: none;
+  text-align: center; 
+  border-bottom: 2px solid green;
+}
+
+.about-tabs li {
+  display: inline-block; 
+  cursor: pointer;
+  padding: 10px 20px;
+  margin-right: 5px; 
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+}
+
+.about-header, .about-subheader {
+  color: green;
+}
+
+.about-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.about-subheader {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #010101;
+}
+
+.about-tech-stack {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-tech-stack div {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 3px 290px;
+  border-radius: 5px;
+}
+
+.about-developer {
+  list-style-type: none;
+  font-size: larger;
+  margin-top: 19px;
+}
+
+.about-developer a {
+  text-decoration: none;
+  color: black;
+  font-weight: bolder;
+}
+
+.about-developer a:hover {
+  text-decoration: underline;
+  color: rgb(253, 139, 75);
+}

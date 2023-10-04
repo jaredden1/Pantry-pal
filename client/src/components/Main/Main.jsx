@@ -5,7 +5,7 @@ import MyRecipes from "../../pages/MyRecipes/MyRecipes";
 import RecipeInfo from "../../pages/RecipeInfo/RecipeInfo";
 import Error from "../../pages/Error/Error";
 
-export default function () {
+export default function Main() {
 
   return (
     <main className="main">
