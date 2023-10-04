@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from "react-router";
 import { deleteRecipe } from "../../utilities/Recipe/recipesService";
 import { v4 as uuidv4 } from "uuid";
-import "./MyRecipe.css";
+import "./MyRecipes.css";
 
 export default function MyRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -52,107 +52,116 @@ export default function MyRecipes() {
   return (
     <div>
       <div>
-        <img src={user?.picture} alt="" />
+        <img src={user?.picture} alt={user?.name} />
         <h2>Welcome {user?.name}</h2>
         <br />
       </div>
-
-      {recipes.map((recipe) => (
-        <div
-          key={uuidv4()}
-          className="myRecipe-searchResult"
-          style={{
-            display:
-              activeRecipe && activeRecipe !== recipe._id ? "none" : "block",
-          }}
-        >
-          <h2>{recipe.title}</h2>
-          <img src={recipe.image} alt={recipe.title} />
-
-          {/* Delete button */}
-          <button
-            className="myRecipe-deleteButton"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleDelete(recipe._id);
+      <div className="myRecipe-container">
+        {recipes.map((recipe) => (
+          <div
+            key={uuidv4()}
+            className="myRecipe-searchResult"
+            style={{
+              display:
+                activeRecipe && activeRecipe !== recipe._id ? "none" : "block",
             }}
           >
-            X
-          </button>
+            <h2 className="myRecipe-title">{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} />
 
-          {/* Expand/Collapse button */}
-          <button
-            onClick={() => {
-              if (activeRecipe === recipe._id) {
-                setActiveRecipe(null);
-              } else {
-                setActiveRecipe(recipe._id);
-              }
-            }}
-          >
-            Expand/Collapse
-          </button>
+            <button
+              className="myRecipe-deleteButton"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDelete(recipe._id);
+              }}
+              aria-label={`Delete ${recipe.title}`}
+            />
 
-          {activeRecipe === recipe._id && (
-            <div className="myRecipe-details">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setContentToShow("summary");
-                }}
+            <button
+              className="myRecipe-expandButton"
+              onClick={() => {
+                setActiveRecipe(
+                  activeRecipe === recipe._id ? null : recipe._id
+                );
+              }}
+              aria-label={`Expand details for ${recipe.title}`}
+            >
+              <span
+                className={
+                  activeRecipe === recipe._id ? "caret rotated" : "caret"
+                }
               >
-                Summary
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setContentToShow("ingredients");
-                }}
-              >
-                Ingredients
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setContentToShow("instructions");
-                }}
-              >
-                Instructions
-              </button>
+                ▼
+              </span>
+            </button>
 
-              {contentToShow === "summary" && (
-                <p>{stripHtml(recipe.summary)}</p>
-              )}
-              {contentToShow === "ingredients" && (
-                <>
-                  <br />
-                  Ingredients:
-                  {recipe.ingredients.map((ingredient) => (
-                    <div key={uuidv4()} className="myRecipe-ingredient">
-                      <img
-                        src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
-                        alt={ingredient[0]}
-                      />
-                      <p>{ingredient[0]}</p>
-                    </div>
-                  ))}
-                </>
-              )}
-              {contentToShow === "instructions" && (
-                <>
-                  <br />
-                  Instructions:
-                  {recipe.instructions.map((instruction, index) => (
-                    <div key={uuidv4()} className="myRecipe-instruction">
-                      {index + 1}. {instruction}
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
+            {activeRecipe === recipe._id && (
+              <div className="myRecipe-details">
+                <button
+                  className="myRecipe-button myRecipe-summaryButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setContentToShow("summary");
+                  }}
+                >
+                  Summary
+                </button>
+
+                <button
+                  className="myRecipe-button myRecipe-ingredientButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setContentToShow("ingredients");
+                  }}
+                >
+                  Ingredients
+                </button>
+                <button
+                  className="myRecipe-button myRecipe-instructionButton"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setContentToShow("instructions");
+                  }}
+                >
+                  Instructions
+                </button>
+                <br />
+                <br />
+                {contentToShow === "summary" && (
+                  <p>{stripHtml(recipe.summary)}</p>
+                )}
+                {contentToShow === "ingredients" && (
+                  <>
+                    <br />
+                    Ingredients:
+                    {recipe.ingredients.map((ingredient) => (
+                      <div key={uuidv4()} className="myRecipe-ingredient">
+                        <img
+                          src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient[1]}`}
+                          alt={ingredient[0]}
+                        />
+                        <p>{ingredient[0]}</p>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {contentToShow === "instructions" && (
+                  <>
+                    <br />
+                    Instructions:
+                    {recipe.instructions.map((instruction, index) => (
+                      <div key={uuidv4()} className="myRecipe-instruction">
+                        {index + 1}. {instruction}
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
