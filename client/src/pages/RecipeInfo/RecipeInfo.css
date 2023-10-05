@@ -84,3 +84,30 @@
 .alert a:hover {
   color: rgb(254, 116, 3);
 }
+
+@media (max-width: 768px) {
+  .recipeInfo {
+    max-width: 100%; 
+    height: auto;    
+    padding: 10px;   
+  }
+
+  .recipeInfo .tabs {
+    flex-direction: column; 
+  }
+
+  .recipeInfo button {
+    padding: 8px 16px; 
+    font-size: 14px;   
+  }
+
+  .recipeInfo .ingredient img {
+    width: 40px;   
+    height: 40px;  
+  }
+
+  .alert {
+    margin-top: 100px; 
+    font-size: large; 
+  }
+}
