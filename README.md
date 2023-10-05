@@ -29,7 +29,8 @@ Fall in love with a dish? Save the recipe with just a click, so you can revisit 
 
 ## Future Features: 
 
-1. Fix deployment issues and bugs
+1. Alow the user to edit saved recipes so they can put their own twists on it.
+2. Add a from so users can input their own recipes and store all their recipes digitally. 
 
 
 
