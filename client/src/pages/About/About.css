@@ -80,3 +80,33 @@ p {
   text-decoration: underline;
   color: rgb(253, 139, 75);
 }
+
+@media (max-width: 768px) {
+  .about {
+      font-size: 15px;
+      padding: 15px;
+  }
+
+  .about-tabs {
+      padding: 15px;
+      border-bottom: 1px solid green;
+  }
+
+  .about-tabs li {
+      padding: 10px 15px;
+      margin-right: 3px;
+      font-size: 14px;
+  }
+
+  .about-header, .about-subheader {
+      font-size: 1.5em;
+  }
+
+  .about-tech-stack div {
+      margin: 3px 10px;
+  }
+
+  .about-developer {
+      font-size: medium;
+  }
+}
