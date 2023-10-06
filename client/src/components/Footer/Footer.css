@@ -1,10 +1,11 @@
 .footer {
-    color: #020202;
-    padding: 10px;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 15px;
+    display: flex;
+    text-justify: distribute;
     position: fixed;
-    bottom: 0; 
-    width: 100%; 
-}
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
