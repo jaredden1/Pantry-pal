@@ -5,11 +5,11 @@ Have you ever stared into your fridge or pantry, wondering what you can cook wit
 ## About Pantry Pal
 Pantry Pal is a delightful solution for those days when inspiration doesn't strike or when you're trying to minimize grocery store trips. The app is tailored to help you whip up delicious meals with what you've got on hand.
 
-<img src="./client/src/assets/Search.png">
-<img src="./client/src/assets/SearchResult.png">
-<img src="./client/src/assets/RecipeInfo.png">
-<img src="./client/src/assets/SavedRecipe.png">
-<img src="./client/src/assets/SavedViewRecipe.png">
+![Alt text](./client/src/assets/Search.png)
+![Alt text](./client/src/assets/SearchResult.png)
+![Alt text](./client/src/assets/RecipeInfo.png)
+![Alt text](./client/src/assets/SavedRecipe.png)
+![Alt text](./client/src/assets/SavedViewRecipe.png)
 
 ## How Do I Use Pantry Pal? 
 Click on this link to access the app: https://thepantrypal.netlify.app
