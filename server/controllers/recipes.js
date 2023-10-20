@@ -42,7 +42,7 @@ async function create(req, res) {
   }
 }
 
-//create async function for CRUD route
+//update async function for CRUD route
 async function update(req, res) {
   console.log("update method triggered with body:", req.body);
   try {
