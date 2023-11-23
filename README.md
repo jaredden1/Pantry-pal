@@ -1,8 +1,9 @@
 ![image](https://i.imgur.com/pjfPXUn.png)
 
+## About Pantry Pal
+
 Have you ever stared into your fridge or pantry, wondering what you can cook with the ingredients at hand? Pantry Pal is here to save your day for breakfast, lunch and dinner!
 
-## About Pantry Pal
 Pantry Pal is a delightful solution for those days when inspiration doesn't strike or when you're trying to minimize grocery store trips. The app is tailored to help you whip up delicious meals with what you've got on hand.
 
 ![image](https://i.imgur.com/I35eOr9.jpg)
@@ -31,7 +32,7 @@ Fall in love with a dish? Save the recipe with just a click, so you can revisit 
 ## Future Features: 
 
 1. Alow the user to edit saved recipes so they can put their own twists on it.
-2. Add a from so users can input their own recipes and store all their recipes digitally. 
+2. Add a form so users can input their own recipes and store all their recipes digitally. 
 
 
 
