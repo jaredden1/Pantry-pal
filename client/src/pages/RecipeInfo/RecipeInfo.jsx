@@ -15,24 +15,23 @@ export default function RecipeInfo() {
   const [activeTab, setActiveTab] = useState("summary");
   const { isAuthenticated, user } = useAuth0();
 
-// useCallback memoizes fetchRecipeDetail function to only recreate when 'id' changes for performance optimization.
-const fetchRecipeDetail = useCallback(async () => {
-  console.log("I am here FIRST");
-  try {
-    const result = await getRecipeDetails(id);
-    setRecipe(result.data[0]);
-    setLoading(false);
-  } catch (error) {
-    console.error("Error fetching recipe:", error);
-    setLoading(false);
-  }
-}, [id]);
+  // useCallback memoizes fetchRecipeDetail function to only recreate when 'id' changes for performance optimization.
+  const fetchRecipeDetail = useCallback(async () => {
+    console.log("I am here FIRST");
+    try {
+      const result = await getRecipeDetails(id);
+      setRecipe(result.data[0]);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching recipe:", error);
+      setLoading(false);
+    }
+  }, [id]);
 
-// useEffect triggers fetchRecipeDetail upon component mount or when fetchRecipeDetail changes.
-useEffect(() => {
-  fetchRecipeDetail(); // Invoke the memoized function to fetch details.
-}, [fetchRecipeDetail]); // Effect depends on fetchRecipeDetail, runs when this function reference changes.
-
+  // useEffect triggers fetchRecipeDetail upon component mount or when fetchRecipeDetail changes.
+  useEffect(() => {
+    fetchRecipeDetail(); // Invoke the memoized function to fetch details.
+  }, [fetchRecipeDetail]); // Effect depends on fetchRecipeDetail, runs when this function reference changes.
 
   // Function to save a recipe
   async function saveRecipe() {
@@ -74,15 +73,6 @@ useEffect(() => {
     return <div>Loading...</div>;
   }
 
-  // // Render alert for unauthenticated users trying to save a recipe
-  // if (showAlert) {
-  //   return (
-  //     <div className="alert">
-  //       Please <Link onClick={loginWithRedirect}>Login</Link> to save recipes 🍲
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="recipeInfo">
       <h2>{recipe.title}</h2>
@@ -91,7 +81,9 @@ useEffect(() => {
       <div className="tabs">
         <button onClick={() => setActiveTab("summary")}>Summary</button>
         <button onClick={() => setActiveTab("ingredients")}>Ingredients</button>
-        <button onClick={() => setActiveTab("instructions")}>Instructions</button>
+        <button onClick={() => setActiveTab("instructions")}>
+          Instructions
+        </button>
         <button onClick={() => saveRecipe()}>Save ME!</button>
       </div>
       <br />
