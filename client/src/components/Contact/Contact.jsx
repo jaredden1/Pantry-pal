@@ -41,7 +41,7 @@ export default function Contact() {
           id="subject"
           name="subject"
           required
-          placeholder="subject:"
+          placeholder="Subject:"
         />
         <br />
         <textarea
